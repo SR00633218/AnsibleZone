@@ -35,7 +35,7 @@
       ansible.builtin.copy:
         src: serverconfiguration.xml
         dest: /etc/nginx/sites-available/default
-    - name: Download foo.conf
+    - name: Download foo.confnopCommerce
       get_url:
         url: sudo wget https://github.com/nopSolutions/nopCommerce/releases/download/release-4.40.4/nopCommerce_4.40.4_NoSource_linux_x64.zip
         dest: /tmp/www/nopCommerce440/nopCommerce_4.40.4_NoSource_linux_x64.zip
@@ -47,15 +47,14 @@
     - name: directories to run nopCommerce 
       ansible.builtin.file:
         stat:
-        path: "{{ item }}"
-        with_items:
-          - /tmp/bin
-          - /tmp/logs
+        path: "{{ folder }}"
+        with_folders:
+          - /var/www/nopCommerce440/bin
+          - /var/www/nopCommerce440/logs
         state: directory
-        mode: '0755' 
     - name: Recursively change ownership of a directory
       ansible.builtin.file:
-        path: /var/www/nopCommerce440
+        path: /var/www
         state: directory
         recurse: yes
         owner: nopCommerce440
