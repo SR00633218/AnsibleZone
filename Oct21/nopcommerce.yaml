@@ -41,7 +41,7 @@
         dest: /tmp/www/nopCommerce440/nopCommerce_4.40.4_NoSource_linux_x64.zip
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
-        src: /tmp/www/nopCommerce440/nopCommerce_4.40.4_NoSource_linux_x64.zip
+        src: /tmp/nopCommerce440/nopCommerce_4.40.4_NoSource_linux_x64.zip
         dest: /var/www/nopCommerce440
         remote_src: yes    
     - name: directories to run nopCommerce 
